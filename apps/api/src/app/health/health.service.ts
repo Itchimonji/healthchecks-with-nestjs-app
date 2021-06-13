@@ -3,7 +3,7 @@ import {HealthCheck, HealthCheckResult, HealthCheckService, HttpHealthIndicator}
 import {PrometheusService} from "../prometheus/prometheus.service";
 import {AnyOtherService} from "../any-other-module/any-other.service";
 import { HealthIndicator } from './interfaces/health-indicator.interface';
-import {GoogleHealthIndicator} from "./models/google-health.indicator";
+import {NestjsHealthIndicator} from "./models/nestjs-health.indicator";
 import {AnyOtherServiceIndicator} from "./models/any-other-health.indicator";
 
 
@@ -16,7 +16,7 @@ export class HealthService {
               private promClientService: PrometheusService,
               private anyOtherService: AnyOtherService) {
     this.listOfThingsToMonitor = [
-      new GoogleHealthIndicator(this.http, 'www.google.de', this.promClientService),
+      new NestjsHealthIndicator(this.http, 'https://docs.nestjs.com', this.promClientService),
       new AnyOtherServiceIndicator(this.anyOtherService, this.promClientService)
     ];
   }

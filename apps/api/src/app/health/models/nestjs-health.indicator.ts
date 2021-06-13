@@ -3,8 +3,8 @@ import { PrometheusService } from "../../prometheus/prometheus.service";
 import { HealthIndicator } from "../interfaces/health-indicator.interface";
 import { BaseHealthIndicator } from "./base-health.indicator";
 
-export class GoogleHealthIndicator extends BaseHealthIndicator implements HealthIndicator {
-  public readonly name = 'Google';
+export class NestjsHealthIndicator extends BaseHealthIndicator implements HealthIndicator {
+  public readonly name = 'NestJS';
   protected readonly help = 'Status of ' + this.name;
   protected readonly promClientService: PrometheusService | undefined;
 

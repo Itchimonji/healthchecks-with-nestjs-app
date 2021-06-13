@@ -5,7 +5,7 @@ import { PrometheusService } from "../../prometheus/prometheus.service";
 import { AnyOtherService } from "../../any-other-module/any-other.service";
 
 export class AnyOtherServiceIndicator extends BaseHealthIndicator implements HealthIndicator {
-  public readonly name = 'Any other custom health indicator';
+  public readonly name = 'AnyOtherCustomHealthIndicator';
   protected readonly help = 'Status of ' + this.name;
 
   constructor(private service: AnyOtherService, protected promClientService: PrometheusService) {
