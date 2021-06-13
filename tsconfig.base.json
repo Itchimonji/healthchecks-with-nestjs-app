@@ -1,0 +1,37 @@
+
+{
+  "compileOnSave": false,
+  "angularCompilerOptions": {
+    "strictTemplates": true,
+    "strictNullChecks": true,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true
+  },
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@healthchecks-with-nestjs-app/api-interfaces": [
+        "libs/api-interfaces/src/index.ts"
+      ]
+    }
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "tmp"]
+}
