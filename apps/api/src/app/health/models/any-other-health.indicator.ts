@@ -1,14 +1,19 @@
-import { BaseHealthIndicator } from "./base-health.indicator";
-import { HealthIndicator } from "../interfaces/health-indicator.interface";
-import { HealthIndicatorResult } from "@nestjs/terminus";
-import { PrometheusService } from "../../prometheus/prometheus.service";
-import { AnyOtherService } from "../../any-other-module/any-other.service";
+import { BaseHealthIndicator } from './base-health.indicator';
+import { HealthIndicator } from '../interfaces/health-indicator.interface';
+import { HealthIndicatorResult } from '@nestjs/terminus';
+import { PrometheusService } from '../../prometheus/prometheus.service';
+import { AnyOtherService } from '../../any-other-module/any-other.service';
 
-export class AnyOtherHealthIndicator extends BaseHealthIndicator implements HealthIndicator {
+export class AnyOtherHealthIndicator
+  extends BaseHealthIndicator
+  implements HealthIndicator {
   public readonly name = 'AnyOtherCustomHealthIndicator';
   protected readonly help = 'Status of ' + this.name;
 
-  constructor(private service: AnyOtherService, protected promClientService: PrometheusService) {
+  constructor(
+    private service: AnyOtherService,
+    protected promClientService: PrometheusService
+  ) {
     super();
     this.registerMetrics();
   }
