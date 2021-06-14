@@ -1,10 +1,10 @@
 {
   "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
-    ".eslintrc.json": "*"
+    "angular.json": "*",
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
   },
   "affected": {
     "defaultBase": "master"
@@ -21,10 +21,6 @@
   "projects": {
     "frontend": {
       "tags": []
-    },
-    "frontend-e2e": {
-      "tags": [],
-      "implicitDependencies": ["frontend"]
     },
     "api": {
       "tags": []

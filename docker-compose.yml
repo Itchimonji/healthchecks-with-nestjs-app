@@ -20,3 +20,5 @@ services:
       - ./data/grafana:/var/lib/grafana
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=12345
+    ports:
+      - '3000:3000'

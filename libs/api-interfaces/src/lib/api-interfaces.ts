@@ -1,3 +1,6 @@
-export interface Message {
-  message: string;
+export interface Health {
+  status: string;
+  info: any;
+  error: any;
+  details: any;
 }
