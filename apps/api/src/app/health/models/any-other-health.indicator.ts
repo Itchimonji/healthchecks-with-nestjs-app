@@ -4,7 +4,7 @@ import { HealthIndicatorResult } from "@nestjs/terminus";
 import { PrometheusService } from "../../prometheus/prometheus.service";
 import { AnyOtherService } from "../../any-other-module/any-other.service";
 
-export class AnyOtherServiceIndicator extends BaseHealthIndicator implements HealthIndicator {
+export class AnyOtherHealthIndicator extends BaseHealthIndicator implements HealthIndicator {
   public readonly name = 'AnyOtherCustomHealthIndicator';
   protected readonly help = 'Status of ' + this.name;
 

@@ -43,4 +43,9 @@ export abstract class BaseHealthIndicator extends HealthIndicator {
   }
 
   public abstract isHealthy(): Promise<HealthIndicatorResult>;
+
+  public reportUnhealthy(): HealthIndicatorResult {
+    this.updateProm(false);
+    return this.getStatus(this.name, false);
+  }
 }

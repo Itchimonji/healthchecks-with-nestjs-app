@@ -5,4 +5,5 @@ export interface HealthIndicator {
   callMetrics: any;
   updateProm(isConnected: boolean): void;
   isHealthy(): Promise<HealthIndicatorResult>;
+  reportUnhealthy(): HealthIndicatorResult;
 }

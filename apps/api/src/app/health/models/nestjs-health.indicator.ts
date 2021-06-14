@@ -30,8 +30,8 @@ export class NestjsHealthIndicator extends BaseHealthIndicator implements Health
       // of Terminus throws an error that need to be catched in the HealthService
       this.updateProm(true);
       return result;
-    } else {
-      return {}
+    }  else {
+      return this.reportUnhealthy();
     }
   }
 }
