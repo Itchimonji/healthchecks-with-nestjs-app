@@ -9,7 +9,7 @@ interface MapHistogram {
 
 @Injectable()
 export class PrometheusService {
-  private readonly serviceTitle = 'atlas-backend';
+  private readonly serviceTitle = 'Backend-For-Frontend';
   private registeredMetrics: MapHistogram = {};
   private readonly registry: Registry;
 
@@ -20,12 +20,17 @@ export class PrometheusService {
   constructor() {
     this.registry = new Registry();
     this.registry.setDefaultLabels({
-      app: this.serviceTitle
+      app: this.serviceTitle,
     });
     collectDefaultMetrics({ register: this.registry });
   }
 
-  public registerMetrics(name: string, help: string, labelNames: string[], buckets: number[]): Histogram<string> {
+  public registerMetrics(
+    name: string,
+    help: string,
+    labelNames: string[],
+    buckets: number[]
+  ): Histogram<string> {
     if (this.registeredMetrics[name] === undefined) {
       const histogram = new Histogram({ name, help, labelNames, buckets });
       this.registry.registerMetric(histogram);

@@ -29,16 +29,16 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "11.2.4",
-    "@angular/cdk": "^11.2.0",
-    "@angular/common": "11.2.4",
-    "@angular/compiler": "11.2.4",
-    "@angular/core": "11.2.4",
-    "@angular/forms": "11.2.4",
+    "@angular/animations": "12.0.4",
+    "@angular/cdk": "^12.0.4",
+    "@angular/common": "12.0.4",
+    "@angular/compiler": "12.0.4",
+    "@angular/core": "12.0.4",
+    "@angular/forms": "12.0.4",
     "@angular/material": "^11.2.0",
-    "@angular/platform-browser": "11.2.4",
-    "@angular/platform-browser-dynamic": "11.2.4",
-    "@angular/router": "11.2.4",
+    "@angular/platform-browser": "12.0.4",
+    "@angular/platform-browser-dynamic": "12.0.4",
+    "@angular/router": "12.0.4",
     "@nestjs/common": "^7.0.0",
     "@nestjs/config": "^0.6.3",
     "@nestjs/core": "^7.0.0",
@@ -51,7 +51,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
-    "zone.js": "^0.10.2"
+    "zone.js": "^0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.1102.3",
@@ -59,8 +59,8 @@
     "@angular-eslint/eslint-plugin-template": "~1.0.0",
     "@angular-eslint/template-parser": "~1.0.0",
     "@angular/cli": "11.2.3",
-    "@angular/compiler-cli": "11.2.4",
-    "@angular/language-service": "11.2.4",
+    "@angular/compiler-cli": "12.0.4",
+    "@angular/language-service": "12.0.4",
     "@nestjs/schematics": "^7.0.0",
     "@nestjs/testing": "^7.0.0",
     "@nrwl/cli": "11.4.0",
@@ -84,7 +84,7 @@
     "prettier": "2.2.1",
     "ts-jest": "26.4.0",
     "ts-node": "~9.1.1",
-    "typescript": "~4.1.0"
+    "typescript": "~4.2.4"
   },
   "lint-staged": {
     "{apps/api/src,apps/yuna/src}/**/*.{html,scss,css}": [
