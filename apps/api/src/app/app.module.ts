@@ -10,13 +10,13 @@ import { MetricsModule } from './metrics/metrics.module';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', '..', '..', 'dist/apps/yuna')
+      rootPath: join(__dirname, '..', '..', '..', 'dist/apps/yuna'),
     }),
     ConfigModule.forRoot({ cache: true }),
     HealthModule,
     PrometheusModule,
     AnyOtherModuleModule,
-    MetricsModule
+    MetricsModule,
   ],
   controllers: [],
   providers: [],
