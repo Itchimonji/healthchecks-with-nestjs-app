@@ -18,8 +18,8 @@ export class NestjsHealthIndicator extends BaseHealthIndicator implements Health
   ) {
     super();
     this.httpHealthIndicator = httpHealthIndicator;
-    this.url = (url ?? '') + '/hyc-query/health';
     this.promClientService = promClientService;
+    this.url = url || '';
     this.registerMetrics();
   }
 
@@ -31,7 +31,7 @@ export class NestjsHealthIndicator extends BaseHealthIndicator implements Health
       this.updateProm(true);
       return result;
     }  else {
-      return this.reportUnhealthy();
+      return {};
     }
   }
 }
