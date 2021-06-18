@@ -11,16 +11,19 @@ const TAG = 'HealthCheck';
 
 export abstract class BaseHealthIndicator extends HealthIndicator {
   public abstract name: string;
+  public callMetrics: any;
+
   protected abstract help: string;
+  protected abstract readonly promClientService: PrometheusService | undefined;
   protected readonly labelNames = ['status'];
   protected readonly buckets = [0.1, 0.3, 0.5, 0.7, 1, 3, 5, 7, 10];
   protected stateHealthy = false;
 
-  protected abstract readonly promClientService: PrometheusService | undefined;
-  public callMetrics: any;
+  private _isRegistered = false;
 
   protected registerMetrics(): void {
     if (this.promClientService) {
+      this._isRegistered = true;
       const histogram: PrometheusHistogram = this.promClientService.registerMetrics(
         this.name,
         this.help,
@@ -50,5 +53,9 @@ export abstract class BaseHealthIndicator extends HealthIndicator {
   public reportUnhealthy(): HealthIndicatorResult {
     this.updateProm(false);
     return this.getStatus(this.name, false);
+  }
+
+  public get isRegistered(): boolean {
+    return this._isRegistered;
   }
 }
