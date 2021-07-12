@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import {Controller, Get, ServiceUnavailableException} from '@nestjs/common';
 import { HealthService } from './health.service';
 import { HealthCheckResult } from '@nestjs/terminus';
 
@@ -8,6 +8,12 @@ export class HealthController {
 
   @Get()
   public async check(): Promise<HealthCheckResult | undefined> {
-    return await this.healthService.check();
+    const healthCheckResult: HealthCheckResult | undefined = await this.healthService.check();
+    for (const key in healthCheckResult?.info) {
+      if (healthCheckResult?.info[key].status === 'down') {
+        throw new ServiceUnavailableException(healthCheckResult);
+      }
+    }
+    return healthCheckResult;
   }
 }
