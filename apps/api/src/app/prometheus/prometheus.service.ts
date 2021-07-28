@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Registry, collectDefaultMetrics, Histogram } from 'prom-client';
+import { Registry, collectDefaultMetrics, Histogram, Gauge } from 'prom-client';
 
 export type PrometheusHistogram = Histogram<string>;
 
@@ -7,10 +7,16 @@ interface MapHistogram {
   [key: string]: Histogram<string>;
 }
 
+interface MapGauge {
+  [key: string]: Gauge<string>;
+}
+
 @Injectable()
 export class PrometheusService {
   private readonly serviceTitle = 'Backend-For-Frontend';
+  private readonly servicePrefix = 'FrontendMetrics_';
   private registeredMetrics: MapHistogram = {};
+  private registeredGauges: MapGauge = {};
   private readonly registry: Registry;
 
   public get metrics(): Promise<string> {
@@ -22,7 +28,7 @@ export class PrometheusService {
     this.registry.setDefaultLabels({
       app: this.serviceTitle,
     });
-    collectDefaultMetrics({ register: this.registry });
+    collectDefaultMetrics({ register: this.registry, prefix: this.servicePrefix });
   }
 
   public registerMetrics(
@@ -37,6 +43,18 @@ export class PrometheusService {
       this.registeredMetrics[name] = histogram;
     }
     return this.registeredMetrics[name];
+  }
+
+  public registerGauge(name: string, help: string): Gauge<string> {
+    if (this.registeredGauges[name] === undefined) {
+      const gauge = (this.registeredGauges[name] = new Gauge({
+        name: this.servicePrefix + name,
+        help,
+      }));
+      this.registry.registerMetric(gauge);
+      this.registeredGauges[name] = gauge;
+    }
+    return this.registeredGauges[name];
   }
 
   public removeSingleMetric(name: string): void {
